@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TableCell">
+        <attr name="backgroundTexture" format="reference"/>
+        <attr name="pieceDrawable" format="reference"/>
+        <attr name="pieceColor" format="color"/>
+        <attr name="piece" format="integer"/>
+    </declare-styleable>
+    <integer name="PAWN">1</integer>
+    <integer name="BISHOP">2</integer>
+    <integer name="KNIGHT">3</integer>
+    <integer name="ROOK">4</integer>
+    <integer name="QUEEN">5</integer>
+    <integer name="KING">6</integer>
+    <integer name="WHITE">7</integer>
+    <integer name="BLACK">8</integer>
+</resources>
