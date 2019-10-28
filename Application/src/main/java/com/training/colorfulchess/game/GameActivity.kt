@@ -1,35 +1,27 @@
 package com.training.colorfulchess.game
 
-import android.content.ClipData
 import android.content.Context
-import android.graphics.Point
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.preference.PreferenceManager
-import android.util.TimingLogger
-import android.view.DragEvent.ACTION_DRAG_STARTED
-import android.view.MotionEvent
-import android.view.View
-import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.GravityCompat
 import androidx.core.view.get
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.gridlayout.widget.GridLayout
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.training.colorfulchess.R
-import com.training.colorfulchess.game.adapters.SkinPagerAdapter
-import kotlinx.android.synthetic.main.activity_game.*
-import java.io.DataInputStream
-import java.io.DataOutputStream
+import com.training.colorfulchess.game.adapters.SkinAdapter
+import com.training.colorfulchess.game.timer.GameTimer
+import com.training.colorfulchess.game.timer.doOnEnd
 import java.io.FileOutputStream
-import java.io.OutputStream
 import java.lang.IllegalArgumentException
-import java.util.ArrayList
 import kotlin.collections.List
 
-class GameActivity : AppCompatActivity(), GameStateListener {
+class GameActivity : AppCompatActivity(), GameStateListener, SkinAdapter.OnSkinSelectedListener {
 
     companion object {
         const val SAVED_GAME_FILE = "savedGame"
@@ -47,9 +39,17 @@ class GameActivity : AppCompatActivity(), GameStateListener {
 
     private val player2View: TextView by lazy { findViewById<TextView>(R.id.player2_textview) }
 
-    private val skinPager : ViewPager by lazy { findViewById<ViewPager>(R.id.skin_vp) }
+    private val timer1: GameTimer by lazy { findViewById<GameTimer>(R.id.player1_timer) }
 
-    private lateinit var skinAdapter : SkinPagerAdapter
+    private val timer2: GameTimer by lazy { findViewById<GameTimer>(R.id.player2_timer) }
+
+    private val drawerLayout: DrawerLayout by lazy { findViewById<DrawerLayout>(R.id.game_drawer) }
+
+    private val skinRecyclerView: RecyclerView by lazy { findViewById<RecyclerView>(R.id.skin_rv) }
+
+    private val skinAdapter: SkinAdapter by lazy { SkinAdapter() }
+
+    private var activeTimer: Int = NONE
 
     private var save = true
 
@@ -77,8 +77,6 @@ class GameActivity : AppCompatActivity(), GameStateListener {
                 NEW_GAME -> {
                     gameController.configuration = defaultGameConfiguration
                     configuration = defaultConfiguration
-
-
                 }
 
                 LOAD_GAME -> {
@@ -87,7 +85,6 @@ class GameActivity : AppCompatActivity(), GameStateListener {
                         openFileInput(
                             SAVED_GAME_FILE
                         )
-
                     )
                     configuration.fromFile(
                         openFileInput(SAVED_GAME_FILE)
@@ -98,53 +95,90 @@ class GameActivity : AppCompatActivity(), GameStateListener {
                 else -> throw IllegalArgumentException("Game mode is incorrect")
             }
             viewModel.provider = gameController
+            viewModel.selectedPathProvider = gameController
+
 
         }
         serializer = gameController
-        controller = TableController(table, configuration, getSkinById(DEFAULT_SKIN_ID,this))
+        controller = TableController(table, configuration, getSkinById(DEFAULT_SKIN_ID, this))
         controller.initialize()
         for (i in 0..63) {
             val cell = table[i] as TableCell
-            val listener = CellClickListener(viewModel, controller)
-            listener.position = i
-            cell.setOnClickListener(listener)
-        }
-        if(gameController.player == PLAYER_1) {
-            player1View.text = "Your turn"
-            player2View.text = "Enemy turn"
-        }
-        else {
-            player1View.text = "Enemy turn"
-            player2View.text = "Your turn"
-        }
-        skinAdapter = SkinPagerAdapter(supportFragmentManager, defaultSkin(this), darkSkin(this))
-        skinPager.adapter = skinAdapter
-        skinPager.addOnPageChangeListener(SkinPageChangedListener(controller, this))
+            val dragListener = CellDragListener(viewModel, controller)
+            val touchListener = CellTouchListener(viewModel, controller)
+            dragListener.position = i
+            touchListener.position = i
+            dragListener.stateProvider = viewModel
+            cell.setOnDragListener(dragListener)
+            cell.setOnTouchListener(touchListener)
 
+
+        }
+
+        if (gameController.player == PLAYER_1) {
+            player1View.text = getString(R.string.your_turn)
+            player2View.text = getString(R.string.enemy_turn)
+        } else {
+            player1View.text = getString(R.string.enemy_turn)
+            player2View.text = getString(R.string.your_turn)
+        }
+
+        activeTimer = if (gameController.player == PLAYER_1) {
+            timer1.start()
+            PLAYER_1
+        } else {
+            timer2.start()
+            PLAYER_2
+        }
+
+        timer1.doOnEnd {
+            this@GameActivity.controller.processTransformations(*(viewModel.switchTurns().toTypedArray()))
+        }
+        timer2.doOnEnd {
+            this@GameActivity.controller.processTransformations(*(viewModel.switchTurns().toTypedArray()))
+        }
+
+        skinRecyclerView.layoutManager = LinearLayoutManager(this)
+        skinAdapter.listener = this
+        skinAdapter.skins = listOf(
+            getSkinById(DEFAULT_SKIN_ID,this),
+            getSkinById(DARK_SKIN_ID, this)
+        )
+        skinRecyclerView.adapter = skinAdapter
+
+    }
+
+    override fun onSkinChanged(skin: Skin) {
+        controller.skin = skin
+        drawerLayout.closeDrawer(GravityCompat.END)
 
     }
 
     override fun onGameStateChanged(state: Int) {
         when (state) {
             PLAYER_1 -> {
-                player1View.text = "You win"
-                player2View.text = "Enemy wins"
+                player1View.text = getString(R.string.you_win)
+                player2View.text = getString(R.string.enemy_wins)
                 save = false
                 PreferenceManager.getDefaultSharedPreferences(this)
                     .edit()
                     .putBoolean(GAME_SAVED, false)
                     .apply()
                 application.deleteFile(SAVED_GAME_FILE)
+                timer1.reset()
+                timer2.reset()
             }
             PLAYER_2 -> {
-                player1View.text = "Enemy wins"
-                player2View.text = "Your win"
+                player1View.text = getString(R.string.enemy_wins)
+                player2View.text = getString(R.string.you_win)
                 save = false
                 PreferenceManager.getDefaultSharedPreferences(this)
                     .edit()
                     .putBoolean(GAME_SAVED, false)
                     .apply()
                 application.deleteFile(SAVED_GAME_FILE)
+                timer1.reset()
+                timer2.reset()
             }
 
         }
@@ -153,36 +187,43 @@ class GameActivity : AppCompatActivity(), GameStateListener {
     override fun onTurnChanged(player: Int) {
         when (player) {
             PLAYER_1 -> {
-                player1View.text = "Your turn"
-                player2View.text = "Enemy turn"
+                player1View.text = getString(R.string.your_turn)
+                player2View.text = getString(R.string.enemy_turn)
+                timer2.reset()
+                timer1.start()
+                activeTimer = PLAYER_1
             }
             PLAYER_2 -> {
-                player1View.text = "Enemy turn"
-                player2View.text = "Your turn"
+                player1View.text = getString(R.string.enemy_turn)
+                player2View.text = getString(R.string.your_turn)
+                timer1.reset()
+                timer2.start()
+                activeTimer = PLAYER_2
             }
 
         }
     }
 
-    fun clicked(cellView: TableCell) {
-
-    }
-
-    fun setClickListeners() {
-        for (position in 0..63) {
-            val cellView = table[position] as TableCell
-            cellView.setOnClickListener {
-                clicked(it as TableCell)
-            }
+    fun switchTimers() {
+        if (activeTimer == PLAYER_1) {
+            timer1.reset()
+            timer2.start()
+            activeTimer = PLAYER_2
+            return
         }
-
+        if (activeTimer == PLAYER_2) {
+            timer2.reset()
+            timer1.start()
+            activeTimer = PLAYER_1
+            return
+        }
     }
 
     override fun onPause() {
         super.onPause()
         if (!save) return
         serializer.serialize(
-                openFileOutput(SAVED_GAME_FILE, Context.MODE_PRIVATE)
+            openFileOutput(SAVED_GAME_FILE, Context.MODE_PRIVATE)
         )
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         preferences.edit()
@@ -193,6 +234,7 @@ class GameActivity : AppCompatActivity(), GameStateListener {
 
     interface ActionProvider {
         fun getTransformations(position: Int): List<Transformation>
+        fun getActionData(): ActionData?
     }
 
     interface GameSerializer {
@@ -205,10 +247,11 @@ class TableController(gridLayout: GridLayout, config: Configuration, textures: S
     private val table = gridLayout
     private var configuration = config
     override var skin: Skin = textures
-        set(value : Skin) {
+        set(value) {
             field = value
             initialize()
         }
+
     fun initialize() {
         for (i in 0..63) {
             val cellView = table[i] as TableCell
@@ -337,11 +380,11 @@ class Skin(
     var enemyCell: Drawable,
 
     val id: Int,
-    val name : String
+    val name: String
 ) {
 
     interface SkinProvider {
-        var skin : Skin
+        var skin: Skin
     }
 }
 
@@ -365,6 +408,7 @@ fun defaultSkin(context: Context) = Skin(
     id = 0,
     name = "Default Skin"
 )
+
 fun darkSkin(context: Context) = Skin(
     context.getDrawable(R.drawable.pawn_black)!!,
     context.getDrawable(R.drawable.pawn_white)!!,

@@ -40,7 +40,7 @@ open class GameConfiguration {
 
     }
 
-    //Case : there's only one check and there's a piece that can block it
+
     val gameState: Int
         get() {
             if (blackKingChecks.isNotEmpty())

@@ -7,4 +7,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="skin_layout_size">80dp</dimen>
     <dimen name="skin_pager_size">102dp</dimen>
+    <dimen name="timer_size">64dp</dimen>
+    <dimen name="navigation_view_size">96dp</dimen>
 </resources>

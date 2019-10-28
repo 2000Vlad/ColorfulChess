@@ -5,11 +5,13 @@
         android:id="@+id/skin_card"
         android:layout_width="@dimen/skin_layout_size"
         android:layout_height="@dimen/skin_layout_size"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        >
 
     <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
         <ImageView
                 android:id="@+id/skin_background"

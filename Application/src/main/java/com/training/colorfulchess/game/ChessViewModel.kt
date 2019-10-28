@@ -6,16 +6,42 @@ import android.graphics.Point
 import androidx.lifecycle.AndroidViewModel
 
 class ChessViewModel(application: Application) :
-    AndroidViewModel(application), GameActivity.ActionProvider {
+    AndroidViewModel(application), GameActivity.ActionProvider, CellDragListener.DragStateProvider {
     var skinId: Int = 0
-    lateinit var provider : ActionProvider
+    lateinit var provider: ActionProvider
+    lateinit var selectedPathProvider: PathProvider
+    var previousAction = noAction
     override fun getTransformations(position: Int): List<Transformation> {
-        return provider.doAction(position).transformations
+        val action = provider.doAction(position)
+        previousAction = action
+        return action.transformations
+    }
+
+    override fun getActionData(): ActionData? = previousAction.actionData
+
+    fun switchTurns(): List<Transformation> {
+        return provider.doAction(-1).transformations
+    }
+
+    override fun getDragState(pos: Int): Int {
+        val path = selectedPathProvider.selectedPath
+        return if (
+            pos in path.map { it.toIndex() }
+        )
+            ACCEPT_DRAG
+        else REJECT_DRAG
+
+
     }
 
     interface ActionProvider {
         fun doAction(position: Int): Action
     }
+
+    interface PathProvider {
+        val selectedPath: Collection<Point>
+    }
+
 }
 
 class Action(var actionCode: Int, var actionData: ActionData?) {
@@ -58,12 +84,12 @@ class ActionEnemyDeselectedData : ActionData() {
     var deselectedPosition = Point()
 }
 
-val ACTION_MOVED = 1
-val ACTION_TAKEN = 2
-val ACTION_SELECTED = 3
-val ACTION_DESELECTED = 4
-val ACTION_ENEMY_SELECTED = 5
-val ACTION_NONE = 6
-val ACTION_ENEMY_DESELECTED = 7
+const val ACTION_MOVED = 1
+const val ACTION_SELECTED = 2
+const val ACTION_DESELECTED = 3
+const val ACTION_ENEMY_SELECTED = 4
+const val ACTION_NONE = 5
+const val ACTION_ENEMY_DESELECTED = 6
+const val ACTION_TURN_CHANGED = 7
 
 val noAction = Action(ACTION_NONE, null)

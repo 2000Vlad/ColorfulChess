@@ -4,13 +4,16 @@ import android.graphics.Point
 import java.io.*
 import java.lang.IllegalArgumentException
 
-class GameController(var configuration: GameConfiguration) : ChessViewModel.ActionProvider, GameActivity.GameSerializer {
+class GameController(var configuration: GameConfiguration) : ChessViewModel.ActionProvider,
+    GameActivity.GameSerializer, ChessViewModel.PathProvider {
     var currentAction = noAction
     var player = PLAYER_1
     var currentPiecePath: MutableList<Point> =
         mutableListOf() //In order to implement DRY principle, updated in performSelectAction
     var state = NONE
-    lateinit var listener : GameStateListener
+    override val selectedPath: Collection<Point>
+        get() = currentPiecePath
+    lateinit var listener: GameStateListener
 
     override fun doAction(position: Int): Action {
         if (state != NONE) return noAction
@@ -35,6 +38,36 @@ class GameController(var configuration: GameConfiguration) : ChessViewModel.Acti
                 currentAction = noAction
                 return action
             }
+            ACTION_TURN_CHANGED -> {
+                switchPlayers()
+                val action = Action(ACTION_TURN_CHANGED, null)
+
+                if (currentAction.actionCode == ACTION_SELECTED) {
+                    val data = currentAction.actionData as ActionSelectedData
+                    action.transformations.addAll(
+                        getDeselectingTransformations(
+                            data.selectedPosition,
+                            currentPiecePath
+                        )
+                    )
+                    currentPiecePath.clear()
+                }
+                if (currentAction.actionCode == ACTION_ENEMY_SELECTED){
+                    val data = currentAction.actionData as ActionEnemySelectedData
+                    action.transformations.addAll(
+                        getDeselectingTransformations(
+                            data.selectedPosition,
+                            emptyList()
+                        )
+                    )
+                }
+                state = configuration.gameState
+                if (state != NONE)
+                    listener.onGameStateChanged(state)
+
+                    listener.onTurnChanged(player)
+                    return action
+            }
             ACTION_MOVED -> {
                 val from = (currentAction.actionData as ActionSelectedData).selectedPosition
                 val action = performMoveAction(from, pos)
@@ -45,7 +78,7 @@ class GameController(var configuration: GameConfiguration) : ChessViewModel.Acti
                 switchPlayers()
                 listener.onTurnChanged(player)
                 state = configuration.gameState
-                if(state != NONE)
+                if (state != NONE)
                     listener.onGameStateChanged(state)
                 return action
             }
@@ -59,7 +92,7 @@ class GameController(var configuration: GameConfiguration) : ChessViewModel.Acti
 
 
     fun getActionType(position: Int): Int {
-
+        if (position == -1) return ACTION_TURN_CHANGED
         if (isSelectedAction(position.toPoint())) return ACTION_SELECTED
         if (isEnemySelectedAction(position.toPoint())) return ACTION_ENEMY_SELECTED
         if (isDeselectedAction(position.toPoint())) return ACTION_DESELECTED
@@ -220,11 +253,10 @@ class GameController(var configuration: GameConfiguration) : ChessViewModel.Acti
                 val data = currentAction.actionData as ActionEnemySelectedData
                 return data.selectedPosition != position
             } else
-                if(currentAction.actionCode == ACTION_SELECTED)
+                if (currentAction.actionCode == ACTION_SELECTED)
                     return position !in currentPiecePath
                 else return true
-        }
-        else return false
+        } else return false
         // return configuration.isEnemyPiece(position)
     }
 
@@ -367,15 +399,15 @@ class GameController(var configuration: GameConfiguration) : ChessViewModel.Acti
         throw IllegalArgumentException("Player not set correct")
     }
 
-    fun deserialize(stream : FileInputStream) {
-        for(i in 0..63) {
+    fun deserialize(stream: FileInputStream) {
+        for (i in 0..63) {
             val piece = stream.read()
             val color = stream.read()
             configuration.table[i] = GameCell(
                 piece = piece,
-                color =  color
+                color = color
             )
-            if(piece == KING) {
+            if (piece == KING) {
                 if (color == WHITE) configuration.whiteKingPosition = i.toPoint()
                 if (color == BLACK) configuration.blackKingPosition = i.toPoint()
             }
@@ -384,21 +416,23 @@ class GameController(var configuration: GameConfiguration) : ChessViewModel.Acti
         configuration.prepareForNextTurn()
         stream.close()
     }
-    override fun serialize(stream : FileOutputStream) {
-       for(cell in configuration.table.withIndex()) {
-           stream.write(cell.value!!.piece)
-           stream.write(cell.value!!.color)
 
-       }
+    override fun serialize(stream: FileOutputStream) {
+        for (cell in configuration.table.withIndex()) {
+            stream.write(cell.value!!.piece)
+            stream.write(cell.value!!.color)
+
+        }
         stream.write(player)
         stream.close()
 
     }
 
 }
+
 interface GameStateListener {
-    fun onGameStateChanged(state : Int)
-    fun onTurnChanged(player : Int)
+    fun onGameStateChanged(state: Int)
+    fun onTurnChanged(player: Int)
 }
 
 

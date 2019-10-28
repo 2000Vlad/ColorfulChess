@@ -64,12 +64,15 @@ class TableCell(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(
-            context.resources.getInteger(R.integer.cellDimensionDp) *
-                    context.resources.displayMetrics.density.toInt(),
-            context.resources.getInteger(R.integer.cellDimensionDp) *
-                    context.resources.displayMetrics.density.toInt()
+            context.resources.getDimension(R.dimen.cell_size).toInt()
+                    ,
+            context.resources.getDimension(R.dimen.cell_size).toInt()
         )
 
+    }
+
+    override fun performClick(): Boolean {
+        return super.performClick()
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -85,7 +88,7 @@ class TableCell(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         backgroundTexture.setBounds(0, 0, width, height)
         backgroundTexture.draw(canvas)
         if(pieceDrawable != null) {
-            pieceDrawable!!.inMiddle(drawRect, context.resources.getInteger(R.integer.marginRatio))
+            pieceDrawable!!.inMiddle(drawRect, context.resources.getInteger(R.integer.marginRatio), true)
 
 
             //bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.width,bitmap.height, rotateMatrix, false) !!
@@ -119,7 +122,7 @@ fun Drawable.inMiddle(container: Rect) {
 
 }
 
-fun Drawable.inMiddle(container: Rect, marginRatio: Int) {
+fun Drawable.inMiddle(container: Rect, marginRatio: Int, inBounds: Boolean) : Rect {
     var right = 0
     var bottom = 0
     var left = 0
@@ -133,8 +136,11 @@ fun Drawable.inMiddle(container: Rect, marginRatio: Int) {
     right = container.width() - marginWidth
     bottom = container.height() - marginHeight
 
+    if(inBounds)
     setBounds(left, top, right, bottom)
+    return Rect(0,0,right,bottom)
 }
+
 /*fun getPieceDrawable(piece: Int, pieceColor: Int): Int =
     when (piece) {
         PAWN ->

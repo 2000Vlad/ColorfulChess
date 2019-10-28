@@ -17,4 +17,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_turn">Your turn</string>
+    <string name="enemy_turn">Enemy turn</string>
+    <string name="enemy_wins">Enemy wins</string>
+    <string name="you_win">You win</string>
 </resources>
