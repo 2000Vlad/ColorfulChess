@@ -3,8 +3,7 @@ package com.training.colorfulchess.game.check
 import android.graphics.Point
 
 class HorizontalCheck(override var king: Point, override var threat: Point) : Check(king, threat) {
-    val minX get() = Math.min(king.x, threat.x)
-    val maxX get() = Math.max(king.x, threat.x)
+
     override fun filter(path : Sequence<Point>) : Sequence<Point> {
         return path.filter fil@{
              it.run {

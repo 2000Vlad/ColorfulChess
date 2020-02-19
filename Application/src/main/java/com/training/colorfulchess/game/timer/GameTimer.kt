@@ -26,11 +26,14 @@ class GameTimer(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private var colorAnimator: ValueAnimator = ValueAnimator()
 
 
+    var timeSpan = 60f
+
+
     fun start() {
 
-        timeAnimator = ValueAnimator.ofFloat(60f, 0f)
+        timeAnimator = ValueAnimator.ofFloat(timeSpan, 0f)
         timeAnimator.interpolator = LinearInterpolator()
-        timeAnimator.duration = MILLIS_PER_SECOND * SECONDS_PER_MINUTE
+        timeAnimator.duration = (MILLIS_PER_SECOND * timeSpan).toLong()
         timeAnimator.repeatCount = 0
         timeAnimator.addUpdateListener {
             time = it.animatedValue as Float
@@ -69,7 +72,7 @@ class GameTimer(context: Context, attrs: AttributeSet) : View(context, attrs) {
         colorAnimator = ValueAnimator.ofArgb(green, yellow, red)
         colorAnimator.interpolator = LinearInterpolator()
         colorAnimator.repeatCount = 0
-        colorAnimator.duration = MILLIS_PER_SECOND * SECONDS_PER_MINUTE
+        colorAnimator.duration = (MILLIS_PER_SECOND * timeSpan).toLong()
         colorAnimator.addUpdateListener {
             val colorInt = it.animatedValue as Int
             sweepColor = colorInt
@@ -78,7 +81,7 @@ class GameTimer(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     }
 
-    fun reset() {
+    fun stop() {
         timeAnimator.cancel()
         time = 0f
         colorAnimator.cancel()
@@ -98,7 +101,7 @@ class GameTimer(context: Context, attrs: AttributeSet) : View(context, attrs) {
         }
     private val sweep: Float
         get() =
-            if (time > 0) (60f - time) * 6f
+            if (time > 0) /*(60f - time) * 6f*/ (360f * (timeSpan - time)) / timeSpan
             else 0f
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

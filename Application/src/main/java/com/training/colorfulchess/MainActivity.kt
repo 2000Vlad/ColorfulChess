@@ -1,12 +1,17 @@
 package com.training.colorfulchess
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.transition.Fade
+import android.transition.Slide
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.training.colorfulchess.game.GameActivity
 import com.training.colorfulchess.game.GameActivity.Companion.GAME_MODE
 import com.training.colorfulchess.game.GameActivity.Companion.GAME_SAVED
@@ -18,7 +23,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+       
+
 
     }
 
@@ -27,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         val extras = Bundle()
         extras.putString(GAME_MODE, NEW_GAME)
         intent.putExtras(extras)
-        startActivity(intent)
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
 
     }
 
@@ -44,7 +53,8 @@ class MainActivity : AppCompatActivity() {
         val extras = Bundle()
         extras.putString(GAME_MODE, LOAD_GAME)
         intent.putExtras(extras)
-        startActivity(intent)
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
 
 
     }

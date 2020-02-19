@@ -1,27 +1,42 @@
 package com.training.colorfulchess.game
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.TextView
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.gridlayout.widget.GridLayout
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.transition.Fade
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.children
+import com.training.colorfulchess.ConfigurationInputStream
+import com.training.colorfulchess.ConfigurationOutputStream
 import com.training.colorfulchess.R
 import com.training.colorfulchess.game.adapters.SkinAdapter
+import com.training.colorfulchess.game.di.dagger.ChessModule
+import com.training.colorfulchess.game.di.dagger.DaggerChessComponent
+import com.training.colorfulchess.game.listeners.CellClickListener
+import com.training.colorfulchess.game.listeners.CellDragListener2
+import com.training.colorfulchess.game.listeners.CellTouchListener2
+import com.training.colorfulchess.game.modelvm2.ChessViewModel2
+import com.training.colorfulchess.game.modelvm2.GameEndObserver
+import com.training.colorfulchess.game.modelvm2.TableTransformationObserver
+import com.training.colorfulchess.game.modelvm2.TurnChangedObserver
 import com.training.colorfulchess.game.timer.GameTimer
+import com.training.colorfulchess.game.timer.RadioTimer
 import com.training.colorfulchess.game.timer.doOnEnd
 import java.io.FileOutputStream
 import java.lang.IllegalArgumentException
 import kotlin.collections.List
+import kotlin.jvm.internal.Ref
 
-class GameActivity : AppCompatActivity(), GameStateListener, SkinAdapter.OnSkinSelectedListener {
+class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
 
     companion object {
         const val SAVED_GAME_FILE = "savedGame"
@@ -31,7 +46,7 @@ class GameActivity : AppCompatActivity(), GameStateListener, SkinAdapter.OnSkinS
         const val GAME_SAVED = "gameSaved"
     }
 
-    private lateinit var controller: TableController
+    //private lateinit var controller: TableController
 
     private val table: GridLayout by lazy { findViewById<GridLayout>(R.id.include2) }
 
@@ -39,9 +54,9 @@ class GameActivity : AppCompatActivity(), GameStateListener, SkinAdapter.OnSkinS
 
     private val player2View: TextView by lazy { findViewById<TextView>(R.id.player2_textview) }
 
-    private val timer1: GameTimer by lazy { findViewById<GameTimer>(R.id.player1_timer) }
+    private val timer1: RadioTimer by lazy { findViewById<RadioTimer>(R.id.player1_timer) }
 
-    private val timer2: GameTimer by lazy { findViewById<GameTimer>(R.id.player2_timer) }
+    private val timer2: RadioTimer by lazy { findViewById<RadioTimer>(R.id.player2_timer) }
 
     private val drawerLayout: DrawerLayout by lazy { findViewById<DrawerLayout>(R.id.game_drawer) }
 
@@ -51,184 +66,151 @@ class GameActivity : AppCompatActivity(), GameStateListener, SkinAdapter.OnSkinS
 
     private var activeTimer: Int = NONE
 
+    private lateinit var tableObserver: TableTransformationObserver
+
+    private lateinit var turnObserver: TurnChangedObserver
+
+    private lateinit var gameEndObserver: GameEndObserver
+
     private var save = true
 
-    private lateinit var serializer: GameSerializer
-
-    private lateinit var viewModel: ChessViewModel
+    private lateinit var viewModel: ChessViewModel2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        val component = DaggerChessComponent.builder()
+            .chessModule(ChessModule(application, this))
+            .build()
 
-        val gameMode = intent.extras!!.getString(GAME_MODE)
+        viewModel = component.viewModel
+        setupObservers()
+        loadGame(intent!!.getStringExtra(GAME_MODE))
 
-        val gameController = GameController(GameConfiguration())
-
-        var configuration = Configuration()
-
-
-        if (savedInstanceState == null) {
-            viewModel = ViewModelProviders.of(this).get(ChessViewModel::class.java)
-
-            gameController.listener = this
-
-            when (gameMode) {
-                NEW_GAME -> {
-                    gameController.configuration = defaultGameConfiguration
-                    configuration = defaultConfiguration
-                }
-
-                LOAD_GAME -> {
-                    gameController.deserialize(
-
-                        openFileInput(
-                            SAVED_GAME_FILE
-                        )
-                    )
-                    configuration.fromFile(
-                        openFileInput(SAVED_GAME_FILE)
-
-                    )
-
-                }
-                else -> throw IllegalArgumentException("Game mode is incorrect")
-            }
-            viewModel.provider = gameController
-            viewModel.selectedPathProvider = gameController
+        setupSkinRecyclerView()
+        setupTableListeners()
+        setupTransitions()
+        setupTimers(20f)
 
 
-        }
-        serializer = gameController
-        controller = TableController(table, configuration, getSkinById(DEFAULT_SKIN_ID, this))
-        controller.initialize()
-        for (i in 0..63) {
-            val cell = table[i] as TableCell
-            val dragListener = CellDragListener(viewModel, controller)
-            val touchListener = CellTouchListener(viewModel, controller)
-            dragListener.position = i
-            touchListener.position = i
-            dragListener.stateProvider = viewModel
-            cell.setOnDragListener(dragListener)
-            cell.setOnTouchListener(touchListener)
-
-
-        }
-
-        if (gameController.player == PLAYER_1) {
-            player1View.text = getString(R.string.your_turn)
-            player2View.text = getString(R.string.enemy_turn)
-        } else {
-            player1View.text = getString(R.string.enemy_turn)
-            player2View.text = getString(R.string.your_turn)
-        }
-
-        activeTimer = if (gameController.player == PLAYER_1) {
-            timer1.start()
-            PLAYER_1
-        } else {
-            timer2.start()
-            PLAYER_2
-        }
-
-        timer1.doOnEnd {
-            this@GameActivity.controller.processTransformations(*(viewModel.switchTurns().toTypedArray()))
-        }
-        timer2.doOnEnd {
-            this@GameActivity.controller.processTransformations(*(viewModel.switchTurns().toTypedArray()))
-        }
-
-        skinRecyclerView.layoutManager = LinearLayoutManager(this)
-        skinAdapter.listener = this
-        skinAdapter.skins = listOf(
-            getSkinById(DEFAULT_SKIN_ID,this),
-            getSkinById(DARK_SKIN_ID, this)
-        )
-        skinRecyclerView.adapter = skinAdapter
 
     }
 
+    private fun loadGame(gameMode: String) {
+        when (gameMode) {
+            NEW_GAME -> loadNewGame()
+            LOAD_GAME -> loadSavedGame()
+            else -> throw IllegalArgumentException("loadGame() crashed") //replace with custom exception
+        }
+
+    }
+
+    private fun loadNewGame() {
+        viewModel.deserialize(getDefaultConfigurationStream(), true)
+    }
+
+    private fun loadSavedGame() {
+        val fileInput = openFileInput(SAVED_GAME_FILE)
+        val configStream = ConfigurationInputStream(fileInput)
+        viewModel.deserialize(configStream, false)
+    }
+
+    private fun setupSkinRecyclerView() {
+        skinRecyclerView.layoutManager = LinearLayoutManager(this)
+        skinAdapter.listener = this
+        skinAdapter.skins = listOf(
+            getSkinById(DEFAULT_SKIN_ID, this),
+            getSkinById(DARK_SKIN_ID, this)
+        )
+        skinRecyclerView.adapter = skinAdapter
+    }
+
+    private fun setupTransitions() {
+        window.enterTransition = Fade().apply { duration = 250 }
+        window.exitTransition = Fade().apply { duration = 100 }
+    }
+
+    private fun setupTableListeners() {
+        for ((i, v) in table.children.withIndex()) {
+            val cell = v as TableCell
+            cell.setOnClickListener(CellClickListener(viewModel, i))
+            /*cell.setOnTouchListener(CellTouchListener2(viewModel, i))
+            cell.setOnDragListener(CellDragListener2(viewModel, i))*/
+        }
+
+    }
+
+    private fun setupTimers(time: Float) {
+        timer1.timeSpan = time
+        timer2.timeSpan = time
+
+        timer1.textColor = Color.BLACK
+        timer2.textColor = Color.BLACK
+
+        timer1.warnTime = time / 4
+        timer2.warnTime = time / 4
+
+        timer1.font = ResourcesCompat.getFont(this, R.font.radio)!!
+        timer2.font = ResourcesCompat.getFont(this, R.font.radio)!!
+
+        timer1.doOnEnd {
+            viewModel.switchTurn()
+        }
+
+        timer2.doOnEnd {
+            viewModel.switchTurn()
+        }
+
+    }
+
+    private fun hideTimers() {
+
+    }
+
+    private fun setupObservers() {
+        val cells = mutableListOf<TableCell>()
+        for (v in table.children)
+            cells.add(v as TableCell)
+        tableObserver = TableTransformationObserver(cells, getSkinById(DEFAULT_SKIN_ID, this))
+        turnObserver = TurnChangedObserver(timer1, timer2, player1View, player2View)
+        gameEndObserver = GameEndObserver(
+            player1View,
+            player2View,
+            PreferenceManager.getDefaultSharedPreferences(this),
+            timer1,
+            timer2,
+            table.children.map { it as TableCell }.toList()
+        )
+
+        viewModel.tableChanges.observe(this, tableObserver)
+        viewModel.gameEnd.observe(this, gameEndObserver)
+        viewModel.turnChange.observe(this, turnObserver)
+    }
+
+    private fun saveGame() {
+        val fileOutput = openFileOutput(SAVED_GAME_FILE, Context.MODE_PRIVATE)
+        val configStream = ConfigurationOutputStream(fileOutput)
+        viewModel.serialize(configStream)
+        PreferenceManager.getDefaultSharedPreferences(this)
+            .edit()
+            .putBoolean(GAME_SAVED, true)
+            .apply()
+    }
+
     override fun onSkinChanged(skin: Skin) {
-        controller.skin = skin
+        tableObserver.texture = skin
         drawerLayout.closeDrawer(GravityCompat.END)
 
     }
 
-    override fun onGameStateChanged(state: Int) {
-        when (state) {
-            PLAYER_1 -> {
-                player1View.text = getString(R.string.you_win)
-                player2View.text = getString(R.string.enemy_wins)
-                save = false
-                PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit()
-                    .putBoolean(GAME_SAVED, false)
-                    .apply()
-                application.deleteFile(SAVED_GAME_FILE)
-                timer1.reset()
-                timer2.reset()
-            }
-            PLAYER_2 -> {
-                player1View.text = getString(R.string.enemy_wins)
-                player2View.text = getString(R.string.you_win)
-                save = false
-                PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit()
-                    .putBoolean(GAME_SAVED, false)
-                    .apply()
-                application.deleteFile(SAVED_GAME_FILE)
-                timer1.reset()
-                timer2.reset()
-            }
 
-        }
-    }
 
-    override fun onTurnChanged(player: Int) {
-        when (player) {
-            PLAYER_1 -> {
-                player1View.text = getString(R.string.your_turn)
-                player2View.text = getString(R.string.enemy_turn)
-                timer2.reset()
-                timer1.start()
-                activeTimer = PLAYER_1
-            }
-            PLAYER_2 -> {
-                player1View.text = getString(R.string.enemy_turn)
-                player2View.text = getString(R.string.your_turn)
-                timer1.reset()
-                timer2.start()
-                activeTimer = PLAYER_2
-            }
 
-        }
-    }
 
-    fun switchTimers() {
-        if (activeTimer == PLAYER_1) {
-            timer1.reset()
-            timer2.start()
-            activeTimer = PLAYER_2
-            return
-        }
-        if (activeTimer == PLAYER_2) {
-            timer2.reset()
-            timer1.start()
-            activeTimer = PLAYER_1
-            return
-        }
-    }
 
     override fun onPause() {
         super.onPause()
-        if (!save) return
-        serializer.serialize(
-            openFileOutput(SAVED_GAME_FILE, Context.MODE_PRIVATE)
-        )
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        preferences.edit()
-            .putBoolean(GAME_SAVED, true)
-            .apply()
+        saveGame()
 
     }
 
@@ -242,117 +224,8 @@ class GameActivity : AppCompatActivity(), GameStateListener, SkinAdapter.OnSkinS
     }
 }
 
-class TableController(gridLayout: GridLayout, config: Configuration, textures: Skin) :
-    CellClickListener.TransformationProcessor, Skin.SkinProvider {
-    private val table = gridLayout
-    private var configuration = config
-    override var skin: Skin = textures
-        set(value) {
-            field = value
-            initialize()
-        }
-
-    fun initialize() {
-        for (i in 0..63) {
-            val cellView = table[i] as TableCell
-            val properties = configuration.cellAt(i)
-            cellView.backgroundTexture =
-                when (properties!!.background) {
-                    WHITE -> skin.whiteCell
-                    BLACK -> skin.blackCell
-                    SELECTED -> skin.selectedCell
-                    ENEMY_SELECTED -> skin.enemyCell
-                    DEFAULT ->
-                        if ((i / 8) % 2 == 0)
-                            if (i % 2 == 0) skin.whiteCell
-                            else skin.blackCell
-                        else
-                            if (i % 2 == 0) skin.blackCell
-                            else skin.whiteCell
-                    else -> throw IllegalArgumentException("CellProperties.background (instance) incorrect")
-                }
-            val reverse = properties.reverse
-            val color = properties.color
-            var pieceDrawable = when (properties.piece) {
-                PAWN ->
-                    if (color == BLACK) skin.blackPawn
-                    else skin.whitePawn
-                BISHOP ->
-                    if (color == BLACK) skin.blackBishop
-                    else skin.whiteBishop
-                KNIGHT ->
-                    if (color == BLACK) skin.blackKnight
-                    else skin.whiteKnight
-                ROOK ->
-                    if (color == BLACK) skin.blackRook
-                    else skin.whiteRook
-                QUEEN ->
-                    if (color == BLACK) skin.blackQueen
-                    else skin.whiteQueen
-                KING ->
-                    if (color == BLACK) skin.blackKing
-                    else skin.whiteKing
-                NONE -> null
-                else -> throw IllegalArgumentException("Piece not correct")
-
-            }
-            if (reverse && pieceDrawable != null)
-                pieceDrawable = reverseDrawable(table.context, pieceDrawable)
-
-            cellView.pieceDrawable = pieceDrawable
-
-        }
-    }
-
-    override fun processTransformations(vararg transformations: Transformation) {
-        configuration.change(*transformations)
-        for (transformation in transformations) {
-            val position = transformation.position
-            val piece = transformation.newProperties.piece
-            val background = transformation.newProperties.background
-            val color = transformation.newProperties.color
-            val reverse = transformation.newProperties.reverse
-            val cellView = table[position] as TableCell
-            cellView.backgroundTexture =
-                when (background) {
-                    BLACK -> skin.blackCell
-                    WHITE -> skin.whiteCell
-                    SELECTED -> skin.selectedCell
-                    ENEMY_SELECTED -> skin.enemyCell
-                    DEFAULT ->
-                        if ((position / 8) % 2 == 0)
-                            if (position % 2 == 0) skin.whiteCell
-                            else skin.blackCell
-                        else
-                            if (position % 2 == 0) skin.blackCell
-                            else skin.whiteCell
-                    else -> throw IllegalArgumentException("Cell background incorrect")
-                }
-            var pieceDrawable =
-                when (piece) {
-                    PAWN -> if (color == BLACK) skin.blackPawn
-                    else skin.whitePawn
-                    BISHOP -> if (color == BLACK) skin.blackBishop
-                    else skin.whiteBishop
-                    ROOK -> if (color == BLACK) skin.blackRook
-                    else skin.whiteRook
-                    KNIGHT -> if (color == BLACK) skin.blackKnight
-                    else skin.whiteKnight
-                    QUEEN -> if (color == BLACK) skin.blackQueen
-                    else skin.whiteQueen
-                    KING -> if (color == BLACK) skin.blackKing
-                    else skin.whiteKing
-                    NONE -> null
-                    else -> throw IllegalArgumentException("piece is incorrect")
-                }
-            if (reverse && pieceDrawable != null) pieceDrawable =
-                reverseDrawable(table.context, pieceDrawable)
-            cellView.pieceDrawable = pieceDrawable
-
-
-        }
-    }
-
+interface TransformationProcessor {
+    fun processTransformations(vararg transformations: Transformation)
 }
 
 class Skin(
@@ -380,7 +253,8 @@ class Skin(
     var enemyCell: Drawable,
 
     val id: Int,
-    val name: String
+    val name: String,
+    val context: Context
 ) {
 
     interface SkinProvider {
@@ -406,7 +280,8 @@ fun defaultSkin(context: Context) = Skin(
     context.getDrawable(R.drawable.selected_cell)!!,
     context.getDrawable(R.drawable.enemy_cell)!!,
     id = 0,
-    name = "Default Skin"
+    name = "Default Skin",
+    context = context
 )
 
 fun darkSkin(context: Context) = Skin(
@@ -427,7 +302,8 @@ fun darkSkin(context: Context) = Skin(
     context.getDrawable(R.drawable.selected_cell)!!,
     context.getDrawable(R.drawable.enemy_cell)!!,
     id = 1,
-    name = "Dark Skin"
+    name = "Dark Skin",
+    context = context
 )
 
 const val DEFAULT_SKIN_ID = 0

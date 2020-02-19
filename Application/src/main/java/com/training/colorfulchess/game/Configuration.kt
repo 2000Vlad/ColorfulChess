@@ -5,7 +5,7 @@ import android.graphics.Point
 import java.io.DataInputStream
 import java.io.InputStream
 
-open class Configuration {
+/*open class Configuration {
     var cells = arrayOfNulls<CellProperties>(64).apply {
         for(i in 0..63)
             this[i] = CellProperties(NONE, NONE, DEFAULT, false)
@@ -19,19 +19,7 @@ open class Configuration {
             }
         }
     }
-    fun fromFile(stream : InputStream) {
-        for(i in 0..63) {
-            val piece = stream.read()
-            val color = stream.read()
-            cells[i] = CellProperties(
-                piece = piece,
-                color = color,
-                background = DEFAULT,
-                reverse = color == BLACK
-            )
-        }
-        stream.close()
-    }
+
     //Debug
     fun setPiece(x : Int, y : Int, piece : Int) {
         cells[Point(x,y).toIndex()]!!.piece = piece
@@ -42,12 +30,18 @@ open class Configuration {
         cells[Point(x,y).toIndex()]!!.color = color
         cells[Point(x,y).toIndex()]!!.reverse = (color == BLACK)
     }
-}
+    fun deserialize(stream: ConfigurationInputStream) {
+        val whites = stream.read()
+        val blacks = stream.read()
+        stream.skip(1) // We don't need player
+    }
+
+}*/
 
 data class CellProperties(var piece: Int, var color: Int, var background: Int, var reverse: Boolean)
 data class Transformation(var position: Int, var newProperties: CellProperties)
 
-val defaultConfiguration : Configuration get() {
+/*val defaultConfiguration : Configuration get() {
     val config = Configuration()
     for (position in 0..63) {
         var color = 0
@@ -83,7 +77,8 @@ val defaultConfiguration : Configuration get() {
         config.change(transformation)
     }
     return config
-}
+}*/
+/*
 val debugConfiguration : Configuration get() {
     val configuration = Configuration()
     configuration.apply {
@@ -110,4 +105,4 @@ val debugConfiguration : Configuration get() {
         setPiece(8,7,PAWN); setColor(8,7,WHITE)
     }
     return configuration
-}
+}*/

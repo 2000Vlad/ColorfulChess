@@ -1,9 +1,11 @@
 package com.training.colorfulchess.game
 
 import android.app.Application
-import android.content.Context
 import android.graphics.Point
 import androidx.lifecycle.AndroidViewModel
+import com.training.colorfulchess.game.listeners.ACCEPT_DRAG
+import com.training.colorfulchess.game.listeners.CellDragListener
+import com.training.colorfulchess.game.listeners.REJECT_DRAG
 
 class ChessViewModel(application: Application) :
     AndroidViewModel(application), GameActivity.ActionProvider, CellDragListener.DragStateProvider {

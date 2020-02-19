@@ -4,8 +4,6 @@ import android.graphics.Point
 
 class VerticalCheck (override var king : Point, override var threat : Point) : Check(king, threat) {
 
-    val minY get() = Math.min(king.y,threat.y)
-    val maxY get() = Math.max(king.y,threat.y)
     override fun filter(path : Sequence<Point>) : Sequence<Point> {
         return path.filter fil@{
             if(it.x != king.x)

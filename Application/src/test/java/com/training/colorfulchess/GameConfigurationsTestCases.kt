@@ -3,11 +3,16 @@ package com.training.colorfulchess
 import android.graphics.Point
 import com.training.colorfulchess.game.*
 import com.training.colorfulchess.game.check.HorizontalCheck
-import com.training.colorfulchess.game.check.MainDiagonalCheck
 import com.training.colorfulchess.game.check.VerticalCheck
 import com.training.colorfulchess.game.constraint.HorizontalConstraint
 import com.training.colorfulchess.game.constraint.MainDiagonalConstraint
 import com.training.colorfulchess.game.constraint.SecondDiagonalConstraint
+import com.training.colorfulchess.game.modelvm2.GameConfiguration2
+import com.training.colorfulchess.game.modelvm2.Piece
+import com.training.colorfulchess.game.modelvm2.PlayerException
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.lang.IllegalStateException
 
 fun hasThreat_Works_Correct_Case1(configuration: GameConfiguration): Point {
     resetConfiguration(configuration)
@@ -499,3 +504,66 @@ fun resetConfiguration(configuration: GameConfiguration) {
             configuration.setColor(Point(i, j), NONE)
         }
 }
+
+fun fromTestFile(file: String): GameConfiguration2 {
+    val configuration =
+        GameConfiguration2()
+    val resource = GameConfiguration2UnitTest::class.java.getResourceAsStream(file)
+    val input = BufferedReader(InputStreamReader(resource))
+
+    val header = input.readLine()
+    val h = header.split(",")
+
+    val whites = h[0].toInt()
+    val blacks = h[1].toInt()
+    val player = h[2].toInt()
+
+    val whitePieces = mutableMapOf<Point, Int>()
+    val blackPieces = mutableMapOf<Point, Int>()
+
+    for (i in 1..whites) {
+        val ln = input.readLine()
+        val line = ln.split(",")
+        val x = line[0].toInt()
+        val y = line[1].toInt()
+        val piece = line[2].toPiece()
+        whitePieces[Point(x, y)] = piece
+        if(piece == KING)
+            configuration.whiteKingPosition = Point(x,y)
+    }
+
+    for (i in 1..blacks) {
+        val ln = input.readLine()
+        val line = ln.split(",")
+        val x = line[0].toInt()
+        val y = line[1].toInt()
+        val piece = line[2].toPiece()
+        blackPieces[Point(x, y)] = piece
+        if(piece == KING)
+            configuration.blackKingPosition = Point(x,y)
+    }
+
+    val configPlayer =
+        when (player) {
+            1 -> PLAYER_1
+            2 -> PLAYER_2
+            else -> throw PlayerException(
+                "You must set the player in the test case file"
+            )
+        }
+    configuration.init(whitePieces, blackPieces, configPlayer, false)
+
+    return configuration
+}
+
+@Piece
+private fun String.toPiece(): Int =
+    when (this) {
+        "PAWN" -> PAWN
+        "QUEEN" -> QUEEN
+        "KNIGHT" -> KNIGHT
+        "BISHOP" -> BISHOP
+        "ROOK" -> ROOK
+        "KING" -> KING
+        else -> throw IllegalStateException("String must be one of ['PAWN','ROOK','BISHOP','QUEEN','KING','KNIGHT']")
+    }

@@ -91,8 +91,8 @@ open class GameConfiguration {
     }
 }
 
-val PLAYER_1 = 1
-val PLAYER_2 = 2
+const val PLAYER_1 = 11
+const val PLAYER_2 = 12
 
 data class GameCell(var piece: Int, var color: Int) {
 
@@ -802,6 +802,7 @@ fun GameConfiguration.getPointsTowardDirection(
         }
     }
 
+
 }
 
 //x is horizontal dimension
@@ -836,7 +837,6 @@ fun Point.toIndex(): Int {
     var index = 0
     index = 8 * (this.y - 1)
     index += ((this.x - 1) % 8)
-
     return index
 }
 
@@ -859,7 +859,7 @@ fun Point.backwardLeft() = Point(this.x - 1, this.y + 1)
 fun Point.forwardLeft() = Point(this.x - 1, this.y - 1)
 
 fun Point.inBounds(): Boolean {
-    val inbounds = this.x >= 1 && this.x <= 8 && this.y >= 1 && this.y <= 8
+    val inbounds = this.x in 1..8 && this.y >= 1 && this.y <= 8
     return inbounds
 }
 
@@ -870,10 +870,6 @@ fun Int.toPoint(): Point {
     val y = (this / 8) + 1
 
     return Point(x, y)
-}
-
-class MutablePair<First, Second>(var first: First, var second: Second) {
-
 }
 
 val defaultGameConfiguration: GameConfiguration

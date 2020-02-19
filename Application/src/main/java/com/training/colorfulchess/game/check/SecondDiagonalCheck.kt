@@ -5,13 +5,6 @@ import android.content.res.XmlResourceParser
 import android.graphics.Point
 
 class SecondDiagonalCheck(override var king: Point, override var threat: Point) : Check(king, threat) {
-    val minX: Int get() = Math.min(king.x, threat.x)
-
-    val minY: Int get() = Math.min(king.y,threat.y)
-
-    val maxX: Int get() = Math.max(king.x,threat.x)
-
-    val maxY: Int get() = Math.max(king.y, threat.y)
 
     val sum: Int get() = king.x + king.y
 
