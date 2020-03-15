@@ -1,8 +1,8 @@
 package com.training.colorfulchess.game
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -13,7 +13,9 @@ import androidx.gridlayout.widget.GridLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.transition.Fade
+import android.view.View.INVISIBLE
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.children
 import com.training.colorfulchess.ConfigurationInputStream
 import com.training.colorfulchess.ConfigurationOutputStream
@@ -22,19 +24,15 @@ import com.training.colorfulchess.game.adapters.SkinAdapter
 import com.training.colorfulchess.game.di.dagger.ChessModule
 import com.training.colorfulchess.game.di.dagger.DaggerChessComponent
 import com.training.colorfulchess.game.listeners.CellClickListener
-import com.training.colorfulchess.game.listeners.CellDragListener2
-import com.training.colorfulchess.game.listeners.CellTouchListener2
 import com.training.colorfulchess.game.modelvm2.ChessViewModel2
 import com.training.colorfulchess.game.modelvm2.GameEndObserver
 import com.training.colorfulchess.game.modelvm2.TableTransformationObserver
 import com.training.colorfulchess.game.modelvm2.TurnChangedObserver
-import com.training.colorfulchess.game.timer.GameTimer
 import com.training.colorfulchess.game.timer.RadioTimer
 import com.training.colorfulchess.game.timer.doOnEnd
 import java.io.FileOutputStream
 import java.lang.IllegalArgumentException
 import kotlin.collections.List
-import kotlin.jvm.internal.Ref
 
 class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
 
@@ -47,6 +45,8 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
     }
 
     //private lateinit var controller: TableController
+
+    val cellSize get() = resources.getDimensionPixelSize(R.dimen.cell_size)
 
     private val table: GridLayout by lazy { findViewById<GridLayout>(R.id.include2) }
 
@@ -90,7 +90,7 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
         setupSkinRecyclerView()
         setupTableListeners()
         setupTransitions()
-        setupTimers(20f)
+        setupTimers(intent.getIntExtra(SECONDS_PER_TURN, 0).toFloat())
 
 
 
@@ -119,8 +119,8 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
         skinRecyclerView.layoutManager = LinearLayoutManager(this)
         skinAdapter.listener = this
         skinAdapter.skins = listOf(
-            getSkinById(DEFAULT_SKIN_ID, this),
-            getSkinById(DARK_SKIN_ID, this)
+            getSkinById(DEFAULT_SKIN_ID, this, cellSize),
+            getSkinById(DARK_SKIN_ID, this ,cellSize)
         )
         skinRecyclerView.adapter = skinAdapter
     }
@@ -141,6 +141,10 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
     }
 
     private fun setupTimers(time: Float) {
+        if(time == 0f) {
+            hideTimers()
+            return
+        }
         timer1.timeSpan = time
         timer2.timeSpan = time
 
@@ -164,14 +168,19 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
     }
 
     private fun hideTimers() {
+        timer1.visibility = INVISIBLE
+        timer2.visibility = INVISIBLE
 
+        timer1.isEnabled = false
+        timer2.isEnabled = false
     }
 
     private fun setupObservers() {
         val cells = mutableListOf<TableCell>()
         for (v in table.children)
             cells.add(v as TableCell)
-        tableObserver = TableTransformationObserver(cells, getSkinById(DEFAULT_SKIN_ID, this))
+        val cellSize = resources.getDimensionPixelSize(R.dimen.cell_size)
+        tableObserver = TableTransformationObserver(cells, getSkinById(DEFAULT_SKIN_ID, this, cellSize))
         turnObserver = TurnChangedObserver(timer1, timer2, player1View, player2View)
         gameEndObserver = GameEndObserver(
             player1View,
@@ -214,14 +223,6 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
 
     }
 
-    interface ActionProvider {
-        fun getTransformations(position: Int): List<Transformation>
-        fun getActionData(): ActionData?
-    }
-
-    interface GameSerializer {
-        fun serialize(stream: FileOutputStream)
-    }
 }
 
 interface TransformationProcessor {
@@ -229,28 +230,28 @@ interface TransformationProcessor {
 }
 
 class Skin(
-    var blackPawn: Drawable,
-    var whitePawn: Drawable,
+    var blackPawn: Bitmap,
+    var whitePawn: Bitmap,
 
-    var blackBishop: Drawable,
-    var whiteBishop: Drawable,
+    var blackBishop: Bitmap,
+    var whiteBishop: Bitmap,
 
-    var blackRook: Drawable,
-    var whiteRook: Drawable,
+    var blackRook: Bitmap,
+    var whiteRook: Bitmap,
 
-    var blackKnight: Drawable,
-    var whiteKnight: Drawable,
+    var blackKnight: Bitmap,
+    var whiteKnight: Bitmap,
 
-    var blackQueen: Drawable,
-    var whiteQueen: Drawable,
+    var blackQueen: Bitmap,
+    var whiteQueen: Bitmap,
 
-    var blackKing: Drawable,
-    var whiteKing: Drawable,
+    var blackKing: Bitmap,
+    var whiteKing: Bitmap,
 
-    var blackCell: Drawable,
-    var whiteCell: Drawable,
-    var selectedCell: Drawable,
-    var enemyCell: Drawable,
+    var blackCell: Bitmap,
+    var whiteCell: Bitmap,
+    var selectedCell: Bitmap,
+    var enemyCell: Bitmap,
 
     val id: Int,
     val name: String,
@@ -262,45 +263,45 @@ class Skin(
     }
 }
 
-fun defaultSkin(context: Context) = Skin(
-    context.getDrawable(R.drawable.pawn_black)!!,
-    context.getDrawable(R.drawable.pawn_white)!!,
-    context.getDrawable(R.drawable.bishop_black)!!,
-    context.getDrawable(R.drawable.bishop_white)!!,
-    context.getDrawable(R.drawable.rook_black)!!,
-    context.getDrawable(R.drawable.rook_white)!!,
-    context.getDrawable(R.drawable.knight_black)!!,
-    context.getDrawable(R.drawable.knight_white)!!,
-    context.getDrawable(R.drawable.queen_black)!!,
-    context.getDrawable(R.drawable.queen_white)!!,
-    context.getDrawable(R.drawable.king_black)!!,
-    context.getDrawable(R.drawable.king_white)!!,
-    context.getDrawable(R.drawable.black_cell)!!,
-    context.getDrawable(R.drawable.white_cell)!!,
-    context.getDrawable(R.drawable.selected_cell)!!,
-    context.getDrawable(R.drawable.enemy_cell)!!,
+fun defaultSkin(context: Context, cellSize: Int) = Skin(
+    context.getDrawable(R.drawable.pawn_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.pawn_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.bishop_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.bishop_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.rook_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.rook_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.knight_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.knight_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.queen_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.queen_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.king_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.king_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.black_cell)!!.toBitmap(cellSize, cellSize),
+    context.getDrawable(R.drawable.white_cell)!!.toBitmap(cellSize, cellSize),
+    context.getDrawable(R.drawable.selected_cell)!!.toBitmap(cellSize, cellSize),
+    context.getDrawable(R.drawable.enemy_cell)!!.toBitmap(cellSize, cellSize),
     id = 0,
     name = "Default Skin",
     context = context
 )
 
-fun darkSkin(context: Context) = Skin(
-    context.getDrawable(R.drawable.pawn_black)!!,
-    context.getDrawable(R.drawable.pawn_white)!!,
-    context.getDrawable(R.drawable.bishop_black)!!,
-    context.getDrawable(R.drawable.bishop_white)!!,
-    context.getDrawable(R.drawable.rook_black)!!,
-    context.getDrawable(R.drawable.rook_white)!!,
-    context.getDrawable(R.drawable.knight_black)!!,
-    context.getDrawable(R.drawable.knight_white)!!,
-    context.getDrawable(R.drawable.queen_black)!!,
-    context.getDrawable(R.drawable.queen_white)!!,
-    context.getDrawable(R.drawable.king_black)!!,
-    context.getDrawable(R.drawable.king_white)!!,
-    context.getDrawable(R.drawable.dark_black_cell)!!,
-    context.getDrawable(R.drawable.dark_white_cell)!!,
-    context.getDrawable(R.drawable.selected_cell)!!,
-    context.getDrawable(R.drawable.enemy_cell)!!,
+fun darkSkin(context: Context, cellSize: Int) = Skin(
+    context.getDrawable(R.drawable.pawn_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.pawn_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.bishop_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.bishop_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.rook_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.rook_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.knight_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.knight_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.queen_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.queen_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.king_black)!!.toBitmap(),
+    context.getDrawable(R.drawable.king_white)!!.toBitmap(),
+    context.getDrawable(R.drawable.dark_black_cell)!!.toBitmap(cellSize, cellSize),
+    context.getDrawable(R.drawable.dark_white_cell)!!.toBitmap(cellSize, cellSize),
+    context.getDrawable(R.drawable.selected_cell)!!.toBitmap(cellSize, cellSize),
+    context.getDrawable(R.drawable.enemy_cell)!!.toBitmap(cellSize, cellSize),
     id = 1,
     name = "Dark Skin",
     context = context
@@ -308,9 +309,9 @@ fun darkSkin(context: Context) = Skin(
 
 const val DEFAULT_SKIN_ID = 0
 const val DARK_SKIN_ID = 1
-fun getSkinById(id: Int, context: Context) =
+fun getSkinById(id: Int, context: Context, intrinsicCellSize: Int) =
     when (id) {
-        DEFAULT_SKIN_ID -> defaultSkin(context)
-        DARK_SKIN_ID -> darkSkin(context)
+        DEFAULT_SKIN_ID -> defaultSkin(context, intrinsicCellSize)
+        DARK_SKIN_ID -> darkSkin(context, intrinsicCellSize)
         else -> throw IllegalArgumentException("Skin id incorrect")
     }

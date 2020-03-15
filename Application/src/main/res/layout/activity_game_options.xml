@@ -10,23 +10,23 @@
             android:id="@+id/timer_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Timer"
-            tools:checked="true"
             android:buttonTint="@android:color/holo_blue_dark"
-
-            app:layout_constraintVertical_bias="0.25"
+            android:text="Timer"
             app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25"
+            tools:checked="true" />
 
     <SeekBar
             android:id="@+id/timer_sb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:minWidth="64dp"
             android:max="3"
+            android:minWidth="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timer_cb" />
@@ -41,12 +41,17 @@
             app:layout_constraintTop_toTopOf="@+id/timer_sb"
             tools:text="1 min" />
 
-    <com.training.colorfulchess.game.timer.RadioTimer
-            android:id="@+id/radio_timer"
+    <Button
+            android:id="@+id/confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/startbutton_background"
+            android:text="Confirm"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timer_cb" />
+            android:layout_marginBottom="40dp"
+            />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

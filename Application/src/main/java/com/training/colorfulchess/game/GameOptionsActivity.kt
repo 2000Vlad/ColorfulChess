@@ -1,5 +1,7 @@
 package com.training.colorfulchess.game
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -8,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.SeekBar
 import android.widget.TextView
@@ -23,25 +26,13 @@ class GameOptionsActivity : AppCompatActivity() {
     private val timerCheckBox : CheckBox by lazy { findViewById<CheckBox>(R.id.timer_cb) }
     private val timerBar : SeekBar by lazy { findViewById<SeekBar>(R.id.timer_sb) }
     private val timerText : TextView by lazy { findViewById<TextView>(R.id.timer_tv)}
+    private val confirmButton : Button by lazy { findViewById<Button>(R.id.confirm_button) }
     private var timers = false
-    private val timer: RadioTimer by lazy { findViewById<RadioTimer>(R.id.radio_timer) }
     private var time = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_options)
-
-        timer.font = ResourcesCompat.getFont(this, R.font.radio)!!
-        timer.timeSpan = 15f
-        timer.warnTime = 5f
-        timer.textColor = Color.BLACK
-
-        timer.listener = object : RadioTimer.TimerStateListener{
-            override fun onTimerStopped() {
-                Log.i("TIMER","STOPPED")
-            }
-        }
-        timer.start()
 
 
 
@@ -61,6 +52,7 @@ class GameOptionsActivity : AppCompatActivity() {
             else {
                 timerText.visibility = INVISIBLE
                 timerBar.visibility = INVISIBLE
+                time = 0L;
             }
         }
         timerBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -80,9 +72,22 @@ class GameOptionsActivity : AppCompatActivity() {
             }
 
         })
+
+        confirmButton.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            val extras = Bundle()
+            extras.putString(GameActivity.GAME_MODE, GameActivity.NEW_GAME)
+            if(timerCheckBox.isChecked)
+            extras.putInt(SECONDS_PER_TURN, timerIntervals[timerBar.progress])
+            else extras.putInt(SECONDS_PER_TURN, 0)
+            intent.putExtras(extras)
+            val options = ActivityOptions.makeSceneTransitionAnimation(this)
+            startActivity(intent, options.toBundle())
+        }
+
     }
 }
 //These are the flags that GameActivity will use to determine it's options not actual values
-const val SECONDS_PER_TURN = 10
+const val SECONDS_PER_TURN = "secsPerTurn"
 
 

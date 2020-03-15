@@ -5,11 +5,11 @@ import android.graphics.Point;
 import androidx.annotation.NonNull;
 
 import com.training.colorfulchess.game.CellProperties;
-import com.training.colorfulchess.game.GameConfigurationKt;
 import com.training.colorfulchess.game.TableCell;
 import com.training.colorfulchess.game.TableCellKt;
 import com.training.colorfulchess.game.Transformation;
 import com.training.colorfulchess.game.modelvm2.GameConfiguration2Kt;
+import com.training.colorfulchess.game.modelvm2.GameConfigurationHelperKt;
 import com.training.colorfulchess.game.modelvm2.Piece;
 
 import java.io.FilterInputStream;
@@ -55,7 +55,7 @@ public class ConfigurationInputStream extends FilterInputStream {
         try {
             int pos = read();
             int piece = read();
-            Point pt = GameConfigurationKt.toPoint(pos);
+            Point pt = GameConfigurationHelperKt.toPoint(pos);
             int color = slotsRead < header.whites ? TableCellKt.WHITE : TableCellKt.BLACK;
             slot.pos = pt;
             slot.piece = piece;

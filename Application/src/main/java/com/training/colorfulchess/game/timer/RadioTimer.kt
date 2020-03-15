@@ -34,9 +34,11 @@ class RadioTimer(context: Context, attrs: AttributeSet?) : View(context, attrs) 
     var warnTime: Float = 30f
     private var warningAnimationStarted = false
 
+
     var timeSpan = 60f
 
     fun start() {
+        if(!isEnabled) return
         timeAnimator = ValueAnimator.ofFloat(timeSpan, 0f)
         timeAnimator.interpolator = LinearInterpolator()
         timeAnimator.duration = (MILLIS_PER_SECOND * timeSpan).toLong()
@@ -146,7 +148,7 @@ class RadioTimer(context: Context, attrs: AttributeSet?) : View(context, attrs) 
 
     private val drawingRect = Rect()
     override fun onDraw(canvas: Canvas?) {
-        if(canvas == null){
+        if(canvas == null || !isEnabled){
             return
         }
         drawingRect.top = 0

@@ -1,33 +1,24 @@
 package com.training.colorfulchess.game
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
-import com.training.colorfulchess.game.WHITE
-import com.training.colorfulchess.game.BLACK
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.rotationMatrix
 import com.training.colorfulchess.R
-import java.lang.IllegalArgumentException
 
 class TableCell(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
-    var pieceDrawable: Drawable? = null
+    var pieceDrawable: Bitmap? = null
         set(value) {
             field = value; invalidate()
 
         }
 
-    var backgroundTexture: Drawable = context.getDrawable(R.drawable.ic_launcher_background)!!
+    var backgroundTexture: Bitmap = context.getDrawable(R.drawable.ic_launcher_background)!!.toBitmap()
         set(value) {
             field = value; invalidate()
         }
@@ -75,6 +66,8 @@ class TableCell(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         return super.performClick()
     }
 
+    val paint = Paint()
+    val destRect = Rect()
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         if (canvas == null) return
@@ -85,15 +78,21 @@ class TableCell(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         }
         drawRect.right = width
         drawRect.bottom = height
-        backgroundTexture.setBounds(0, 0, width, height)
-        backgroundTexture.draw(canvas)
-        if(pieceDrawable != null) {
-            pieceDrawable!!.inMiddle(drawRect, context.resources.getInteger(R.integer.marginRatio), true)
 
+        destRect.apply {
+            left = 0
+            top = 0
+            right = width
+            bottom - height
+        }
+        canvas.drawBitmap(backgroundTexture, null, drawRect, paint)
+
+
+        if(pieceDrawable != null) {
+            val dest = pieceDrawable!!.inMiddle(drawRect, context.resources.getInteger(R.integer.marginRatio))
 
             //bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.width,bitmap.height, rotateMatrix, false) !!
-
-            pieceDrawable!!.draw(canvas)
+            canvas.drawBitmap(pieceDrawable!!, null, dest, paint)
 
         }
 
@@ -122,7 +121,7 @@ fun Drawable.inMiddle(container: Rect) {
 
 }
 
-fun Drawable.inMiddle(container: Rect, marginRatio: Int, inBounds: Boolean) : Rect {
+fun Bitmap.inMiddle(container: Rect, marginRatio: Int) : Rect {
     var right = 0
     var bottom = 0
     var left = 0
@@ -136,8 +135,6 @@ fun Drawable.inMiddle(container: Rect, marginRatio: Int, inBounds: Boolean) : Re
     right = container.width() - marginWidth
     bottom = container.height() - marginHeight
 
-    if(inBounds)
-    setBounds(left, top, right, bottom)
     return Rect(0,0,right,bottom)
 }
 
@@ -226,9 +223,8 @@ fun Drawable.inMiddle(container: Rect, marginRatio: Int, inBounds: Boolean) : Re
 
 
 } */
-fun reverseDrawable(context: Context, drawable: Drawable): Drawable {
-    val bitmap = drawable.toBitmap()
-    val reverseBitmap = Bitmap.createBitmap(
+fun reverseDrawable(context: Context, bitmap: Bitmap): Bitmap {
+    return Bitmap.createBitmap(
         bitmap,
         0,
         0,
@@ -241,7 +237,6 @@ fun reverseDrawable(context: Context, drawable: Drawable): Drawable {
         ),
         false
     )
-    return reverseBitmap.toDrawable(context.resources)
 }
 val TableCell.indexInParent : Int get() = (parent as ViewGroup).indexOfChild(this)
 const val PAWN = 1

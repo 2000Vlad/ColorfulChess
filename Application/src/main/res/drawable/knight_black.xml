@@ -100,7 +100,6 @@
       android:strokeLineJoin="miter"
       android:strokeWidth="0"
       android:fillColor="#000000"
-      android:strokeColor="#d50000"
       android:fillType="nonZero"
       android:fillAlpha="1"
       android:strokeLineCap="butt"/>
@@ -137,7 +136,6 @@
       android:strokeLineJoin="miter"
       android:strokeWidth="0"
       android:fillColor="#000000"
-      android:strokeColor="#d50000"
       android:fillType="nonZero"
       android:fillAlpha="1"
       android:strokeLineCap="butt"/>

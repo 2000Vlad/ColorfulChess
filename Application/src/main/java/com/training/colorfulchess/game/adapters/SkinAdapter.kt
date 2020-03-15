@@ -46,8 +46,8 @@ class SkinAdapter : RecyclerView.Adapter<SkinAdapter.SkinViewHolder>() {
         }
 
         fun bind(skin : Skin) {
-            skinBackground.background = skin.blackCell
-            skinForeground.background = skin.whitePawn
+            skinBackground.setImageBitmap(skin.blackCell)
+            skinForeground.setImageBitmap(skin.whitePawn)
         }
 
     }

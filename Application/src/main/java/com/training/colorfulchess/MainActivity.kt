@@ -17,6 +17,7 @@ import com.training.colorfulchess.game.GameActivity.Companion.GAME_MODE
 import com.training.colorfulchess.game.GameActivity.Companion.GAME_SAVED
 import com.training.colorfulchess.game.GameActivity.Companion.LOAD_GAME
 import com.training.colorfulchess.game.GameActivity.Companion.NEW_GAME
+import com.training.colorfulchess.game.GameOptionsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,12 +32,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun launchNewGame(v: View) {
-        val intent = Intent(this, GameActivity::class.java)
-        val extras = Bundle()
-        extras.putString(GAME_MODE, NEW_GAME)
-        intent.putExtras(extras)
-        val options = ActivityOptions.makeSceneTransitionAnimation(this)
-        startActivity(intent, options.toBundle())
+        val intent = Intent(this, GameOptionsActivity::class.java)
+        startActivity(intent)
 
     }
 

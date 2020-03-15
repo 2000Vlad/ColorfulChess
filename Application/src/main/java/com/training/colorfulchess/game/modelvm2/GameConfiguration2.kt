@@ -12,14 +12,6 @@ import com.training.colorfulchess.game.check.LinearCheck
 import com.training.colorfulchess.game.constraint.Constraint
 import com.training.colorfulchess.game.constraint.DiagonalConstraint
 import com.training.colorfulchess.game.constraint.LinearConstraint
-import com.training.colorfulchess.game.forward
-import com.training.colorfulchess.game.forwardRight
-import com.training.colorfulchess.game.right
-import com.training.colorfulchess.game.backwardRight
-import com.training.colorfulchess.game.backward
-import com.training.colorfulchess.game.backwardLeft
-import com.training.colorfulchess.game.left
-import com.training.colorfulchess.game.forwardLeft
 import java.io.InputStream
 import java.io.OutputStream
 import java.lang.Exception
@@ -40,6 +32,7 @@ class GameConfiguration2 @Inject constructor() {
                 NONE
             )
         }
+
     }
 
     @Player
@@ -412,7 +405,7 @@ internal fun GameConfiguration2.getKingPositions(king: Point): Sequence<Point> {
                 return@filter false
         }
 
-        val knightPath = getKnightAbsolutePositions(it)
+        val knightPath = getKnightAbsolutePositions(it, true)
         for (pos in knightPath.toList()) {
             if (getPiece(pos) == KNIGHT && isEnemy(pos, kingColor))
                 return@filter false
@@ -527,7 +520,7 @@ private fun GameConfiguration2.getQueenAbsolutePositions(queen: Point) =
 /**
  * @return The path of a specified knight without taking into account [Checks][Check] or [Constraints][Constraint]
  */
-private fun GameConfiguration2.getKnightAbsolutePositions(knight: Point): Sequence<Point> {
+/*private fun GameConfiguration2.getKnightAbsolutePositions(knight: Point): Sequence<Point> {
 
     val seed: Triple<Point, Point, Point> =
         Triple(knight.forward().forward().left(), Point(2, 0), Point(1, 1))
@@ -553,6 +546,22 @@ private fun GameConfiguration2.getKnightAbsolutePositions(knight: Point): Sequen
             val pass = it.inBounds() && (isEnemyOrEmpty(it, getColor(knight)))
             pass
         }
+}*/
+
+private fun GameConfiguration2.getKnightAbsolutePositions(knight: Point, includeFriends: Boolean = false): Sequence<Point> {
+    val totalPath = sequenceOf(
+        knight.forward(2).left(),
+        knight.forward(2).right(),
+        knight.right(2).forward(),
+        knight.right(2).backward(),
+        knight.backward(2).left(),
+        knight.backward(2).right(),
+        knight.left(2).forward(),
+        knight.left(2).backward()
+    )
+    return totalPath.filter {
+        return@filter it.inBounds() && (includeFriends || isEnemyOrEmpty(it, getColor(knight)))
+    }
 }
 
 /**
@@ -899,69 +908,9 @@ const val STALEMATE = 10
 //endregion
 
 //region Annotations
-@Target(
-    AnnotationTarget.VALUE_PARAMETER,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY
-)
-@IntDef(
-    WHITE,
-    BLACK
-)
-annotation class PieceColor
 
-@Target(
-    AnnotationTarget.VALUE_PARAMETER,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY,
-    AnnotationTarget.FIELD
-)
-@IntDef(
-    PAWN,
-    BISHOP,
-    KNIGHT,
-    ROOK,
-    QUEEN,
-    KING
-)
-annotation class Piece
 
-@Target(
-    AnnotationTarget.VALUE_PARAMETER,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY
-)
-@IntDef(
-    CHECKMATE,
-    STALEMATE,
-    NONE
-)
-annotation class GameState
 
-@Target(
-    AnnotationTarget.VALUE_PARAMETER,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY
-)
-@IntDef(
-    PLAYER_1,
-    PLAYER_2
-)
-annotation class Player
-//endregion
 
-//region Exceptions
-class PieceException(msg: String) : Exception(msg) {
-    constructor() : this("Piece must be one of [PAWN, BISHOP, KNIGHT, ROOK, KING, QUEEN]")
-
-}
-
-class ColorException(msg: String) : Exception(msg) {
-    constructor() : this("Color must be one of [WHITE, BLACK]")
-}
-
-class PlayerException(msg: String) : Exception(msg) {
-    constructor() : this("Player must be one of [PLAYER_1, PLAYER_2]")
-}
 
 //endregion

@@ -2,7 +2,7 @@ package com.training.colorfulchess;
 
 import android.graphics.Point;
 
-import com.training.colorfulchess.game.GameConfigurationKt;
+import com.training.colorfulchess.game.modelvm2.GameConfigurationHelperKt;
 import com.training.colorfulchess.game.modelvm2.Piece;
 
 import java.io.FilterOutputStream;
@@ -15,7 +15,7 @@ public class ConfigurationOutputStream extends FilterOutputStream {
     }
     public void writeSlot(Point pos, @Piece int piece) {
         try{
-            write(GameConfigurationKt.toIndex(pos));
+            write(GameConfigurationHelperKt.toIndex(pos));
             write(piece);
 
         }catch (IOException ignored) {
