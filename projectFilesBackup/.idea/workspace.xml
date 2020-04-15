@@ -1,0 +1,1398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e8a3b8b3-f9e5-49f6-bf22-e835ecd2d1dd" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_10_API_27" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ColorfulChess" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="211" column="5" lean-forward="true" selection-start-line="211" selection-start-column="5" selection-end-line="211" selection-end-column="5" />
+              <folding>
+                <element signature="e#1794#3501#0" />
+                <element signature="e#4662#5827#0" />
+                <element signature="e#7623#9386#0" />
+                <element signature="e#9400#9427#0" />
+                <element signature="e#14262#14283#0" />
+                <element signature="e#14769#15177#0" />
+                <element signature="e#15784#15806#0" />
+                <element signature="e#16823#16858#0" />
+                <element signature="e#16927#16945#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
+              <folding>
+                <element signature="e#36#245#0" expanded="true" />
+                <element signature="e#372#388#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Object" />
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>R</find>
+      <find>king</find>
+      <find>3</find>
+      <find>position</find>
+      <find>Point(5,3)</find>
+      <find>Transformation(position=20, newProperties=CellProperties(piece=2, color=8, background=10, reverse=true))</find>
+      <find>PAWN</find>
+      <find>1</find>
+      <find>2)</find>
+      <find>DataInputStream</find>
+      <find>DataOutputStream</find>
+      <find>setPiece(8,1,ROOK);</find>
+      <find>width</find>
+      <find>start</find>
+      <find>rook</find>
+      <find>forward</find>
+      <find>forwardLeft</find>
+      <find>threat</find>
+      <find>king.forwardLeft(count)</find>
+      <find>black</find>
+      <find>white</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>left</replace>
+      <replace>3</replace>
+      <replace>pos</replace>
+      <replace>Point(6,4)</replace>
+      <replace>NONE</replace>
+      <replace>2</replace>
+      <replace>7)</replace>
+      <replace>height</replace>
+      <replace>bishop</replace>
+      <replace>backward</replace>
+      <replace>forwardRight</replace>
+      <replace>friend</replace>
+      <replace>fl</replace>
+      <replace>white</replace>
+      <replace>black</replace>
+    </replaceStrings>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\Vlad\Desktop\colorfulchess.jks" />
+    <option name="KEY_ALIAS" value="ColorfulChess" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/SecondDiagonalConstraint.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/VerticalConstraint.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/DirectCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/TestCases.kt" />
+        <option value="$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfigurationsTestCases.kt" />
+        <option value="$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfigurationAsserts.kt" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameControllerUnitTest.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellClickListener.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/layout/table_cells.xml" />
+        <option value="$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfigurationUnitTest.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/values-w820dp/dimens.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/values-w820dp/cell.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/Configuration.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/drawable/dark_black_cell.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/drawable/dark_selected_cell.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/drawable/dark_enemy_selected_cell.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/fragments/SkinFragment.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/SkinPageChangedListener.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/adapters/SkinPagerAdapter.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/drawable/ic_timer.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/timer/TimerStateListener.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/timer/GameTimer.kt" />
+        <option value="$PROJECT_DIR$/Application/build.gradle" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/adapters/SkinAdapter.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/layout/activity_game.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/res/layout/skin_layout.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/ChessViewModel.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/TableCell.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellTouchListener.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/Check.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/HorizontalCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/SecondDiagonalCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/MainDiagonalCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/VerticalCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/DiagonalCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/LinearCheck.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/Constraint.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/LinearConstraint.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/DiagonalConstraint.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration.kt" />
+        <option value="$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="96" />
+    <option name="width" value="1346" />
+    <option name="height" value="698" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ColorfulChess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ColorfulChess" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ColorfulChess" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="Application" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ColorfulChess" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ColorfulChess" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ColorfulChess" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Application" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Application" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Application" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="colorfulchess" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Application" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="colorfulchess" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ColorfulChess" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Application" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="colorfulchess" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="HGEPUL26" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-10-26T15:00:58.056Z" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Vlad\AndroidStudioProjects\ColorfulChess\Application" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="device.picker.selection" value="HGEPUL26" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/Application/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/colorfulchess.jks" />
+    <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1570168451715" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Default Config" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="releaseconfig" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.training.colorfulchess" />
+      <recent name="com.training.colorfulchess.game" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="com.training.colorfulchess.game" />
+      <recent name="com.training.colorfulchess" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vlad\AndroidStudioProjects\ColorfulChess\Application\src\main\res\drawable-xxxhdpi" />
+      <recent name="C:\Users\Vlad\AndroidStudioProjects\ColorfulChess\Application\src\main\res\drawable" />
+      <recent name="C:\Users\Vlad\AndroidStudioProjects\ColorfulChess\Application\src\main\res\drawable-xxhdpi" />
+      <recent name="C:\Users\Vlad\AndroidStudioProjects\ColorfulChess\Application\src\main\res\drawable\black_cell-xxhdpi" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Android JUnit.GameConfiguration2UnitTest.getKingChecks_WorksCorrect">
+    <configuration name="GameConfiguration2UnitTest.getKingChecks_WorksCorrect" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.colorfulchess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.training.colorfulchess" />
+      <option name="MAIN_CLASS_NAME" value="com.training.colorfulchess.GameConfiguration2UnitTest" />
+      <option name="METHOD_NAME" value="getKingChecks_WorksCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.colorfulchess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.training.colorfulchess" />
+      <option name="MAIN_CLASS_NAME" value="com.training.colorfulchess.GameConfiguration2UnitTest" />
+      <option name="METHOD_NAME" value="getKingPositions_WorksCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameConfigurationUnitTest.getAvailablePositions_Works_Correct_Bishop" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.colorfulchess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.training.colorfulchess" />
+      <option name="MAIN_CLASS_NAME" value="com.training.colorfulchess.GameConfigurationUnitTest" />
+      <option name="METHOD_NAME" value="getAvailablePositions_Works_Correct_Bishop" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameControllerUnitTest.mainTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.colorfulchess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.training.colorfulchess" />
+      <option name="MAIN_CLASS_NAME" value="com.training.colorfulchess.GameControllerUnitTest" />
+      <option name="METHOD_NAME" value="mainTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Application" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Application" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameControllerUnitTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.colorfulchess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.training.colorfulchess" />
+      <option name="MAIN_CLASS_NAME" value="com.training.colorfulchess.GameControllerUnitTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameControllerUnitTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.training.colorfulchess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.training.colorfulchess" />
+      <option name="MAIN_CLASS_NAME" value="com.training.colorfulchess.GameControllerUnitTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Android App.Application" />
+      <item itemvalue="Android JUnit.GameConfigurationUnitTest.getAvailablePositions_Works_Correct_Bishop" />
+      <item itemvalue="Android JUnit.GameControllerUnitTest.mainTest" />
+      <item itemvalue="Android JUnit.GameConfiguration2UnitTest.getKingPositions_WorksCorrect" />
+      <item itemvalue="Android JUnit.GameConfiguration2UnitTest.getKingChecks_WorksCorrect" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android JUnit.GameConfiguration2UnitTest.getKingChecks_WorksCorrect" />
+        <item itemvalue="Android JUnit.GameConfiguration2UnitTest.getKingPositions_WorksCorrect" />
+        <item itemvalue="Android JUnit.GameControllerUnitTest.mainTest" />
+        <item itemvalue="Android JUnit.GameConfigurationUnitTest.getAvailablePositions_Works_Correct_Bishop" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8a3b8b3-f9e5-49f6-bf22-e835ecd2d1dd" name="Default Changelist" comment="" />
+      <created>1564249875229</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564249875229</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 31m 04s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 34m 13s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 39m 02s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 39m 27s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 44m 04s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 45m 52s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 22h 46m 50s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingPositions_WorksCorrect - 2019.11.03 at 23h 10m 27s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingPositions_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingChecks_WorksCorrect - 2019.11.03 at 23h 10m 46s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingChecks_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="GameConfiguration2UnitTest_getKingChecks_WorksCorrect - 2019.11.03 at 23h 11m 14s.xml">
+      <configuration name="GameConfiguration2UnitTest.getKingChecks_WorksCorrect" configurationId="AndroidJUnit" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4832776" visible="true" weight="0.22692889" />
+      <window_info id="Structure" order="2" sideWeight="0.50167227" side_tool="true" weight="0.25642964" />
+      <window_info id="Build Variants" order="3" sideWeight="0.5167224" side_tool="true" weight="0.25642964" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="Resources Explorer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.5200669" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.6304348" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32943144" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.21571906" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.42307693" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50075644" side_tool="true" weight="0.30100334" />
+      <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" weight="0.49832776" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49924356" weight="0.30100334" />
+      <window_info anchor="bottom" id="Find" order="10" weight="0.32943144" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32943144" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Gradle" order="1" weight="0.32980332" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Flutter Inspector" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.28441754" />
+      <window_info anchor="right" id="Assistant" order="6" weight="0.32980332" />
+      <window_info anchor="right" id="Kotlin Bytecode" order="7" weight="0.63615733" />
+      <window_info anchor="right" id="Flutter Outline" order="8" weight="0.32980332" />
+      <window_info anchor="right" id="Device File Explorer" order="9" side_tool="true" weight="0.32980332" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4832776" visible="true" weight="0.25642964" />
+      <window_info id="Structure" order="2" sideWeight="0.50167227" side_tool="true" weight="0.25642964" />
+      <window_info id="Build Variants" order="3" sideWeight="0.5167224" side_tool="true" weight="0.25642964" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="Resources Explorer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.5200669" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.6304348" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32943144" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.29264215" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.42307693" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50075644" side_tool="true" weight="0.30100334" />
+      <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" weight="0.49832776" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49924356" weight="0.30100334" />
+      <window_info anchor="bottom" id="Find" order="10" weight="0.32943144" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32943144" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Gradle" order="1" weight="0.32980332" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Flutter Inspector" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.28441754" />
+      <window_info anchor="right" id="Assistant" order="6" weight="0.32980332" />
+      <window_info anchor="right" id="Device File Explorer" order="7" side_tool="true" weight="0.32980332" />
+      <window_info anchor="right" id="Kotlin Bytecode" order="8" weight="0.63615733" />
+      <window_info anchor="right" id="Flutter Outline" order="9" weight="0.32980332" />
+    </layout-to-restore>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt</url>
+          <line>208</line>
+          <properties />
+          <option name="timeStamp" value="1028" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt</url>
+          <line>209</line>
+          <properties />
+          <option name="timeStamp" value="1029" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt</url>
+          <line>210</line>
+          <properties />
+          <option name="timeStamp" value="1030" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt</url>
+          <line>214</line>
+          <properties />
+          <option name="timeStamp" value="1031" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt</url>
+          <line>215</line>
+          <properties />
+          <option name="timeStamp" value="1032" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt</url>
+          <line>216</line>
+          <properties />
+          <option name="timeStamp" value="1033" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="1034" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="1035" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="1036" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="1037" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="1038" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="1039" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="1040" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="1041" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="1042" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="1043" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="1044" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="1045" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="1051" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="1061" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="1063" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="1064" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>24</line>
+          <properties />
+          <option name="timeStamp" value="1065" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="1066" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="1067" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="1068" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="1138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="1139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="1140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="1141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>192</line>
+          <properties />
+          <option name="timeStamp" value="1142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>193</line>
+          <properties />
+          <option name="timeStamp" value="1143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>194</line>
+          <properties />
+          <option name="timeStamp" value="1144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>195</line>
+          <properties />
+          <option name="timeStamp" value="1145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>196</line>
+          <properties />
+          <option name="timeStamp" value="1146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>197</line>
+          <properties />
+          <option name="timeStamp" value="1147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>198</line>
+          <properties />
+          <option name="timeStamp" value="1148" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>200</line>
+          <properties />
+          <option name="timeStamp" value="1149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>205</line>
+          <properties />
+          <option name="timeStamp" value="1150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>207</line>
+          <properties />
+          <option name="timeStamp" value="1151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>212</line>
+          <properties />
+          <option name="timeStamp" value="1152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>214</line>
+          <properties />
+          <option name="timeStamp" value="1153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>215</line>
+          <properties />
+          <option name="timeStamp" value="1154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>217</line>
+          <properties />
+          <option name="timeStamp" value="1155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>219</line>
+          <properties />
+          <option name="timeStamp" value="1156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt</url>
+          <line>220</line>
+          <properties />
+          <option name="timeStamp" value="1157" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="dart-exception">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>num</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>it.x != king.x</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>knightPath.toList()</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>positions.toList()</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.selectedPosition.toIndex()</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.selectedPosition.toIndex()</expression-string>
+        <language-id>kotlin</language-id>
+        <custom-info>import com.training.colorfulchess.game.toIndex</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ACTION_DRAG_EXITED</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>event.result</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>event.clipData.getItemAt(0).text</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>event.clipData.getItemAt(0)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable/dark_white_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable/dark_black_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable/dark_selected_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable/dark_enemy_selected_cell.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/timer/TimerStateListener.kt" />
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/animation/ValueAnimator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-217">
+          <caret line="1031" column="17" selection-start-line="1031" selection-start-column="17" selection-end-line="1031" selection-end-column="17" />
+          <folding>
+            <element signature="e#46015#46016#0" expanded="true" />
+            <element signature="e#46043#46044#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/animation/Animator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3085">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.core/core-ktx/1.1.0/8e51cf92327310f53f74ba17a62d465f6fdde392/core-ktx-1.1.0-sources.jar!/androidx/core/animation/Animator.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/adapters/SkinAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/timer/GameTimer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="181" column="45" selection-start-line="181" selection-start-column="45" selection-end-line="181" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/activity_game.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/adapters/SkinPagerAdapter.kt" />
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/fragments/SkinFragment.kt" />
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/drawable/ic_timer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellClickListener.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="75" lean-forward="true" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/ChessViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/SkinPageChangedListener.kt" />
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellDragListener.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/Configuration.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="92" column="38" selection-start-line="92" selection-start-column="38" selection-end-line="92" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/CellTouchListener.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="97" column="59" selection-start-line="97" selection-start-column="59" selection-end-line="97" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/TableCell.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2091">
+          <caret line="140" column="32" selection-start-line="140" selection-start-column="32" selection-end-line="140" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/skin_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/graphics/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1773">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/androidx/cardview/group-index.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125817">
+          <caret line="7564" column="35" selection-start-line="7564" selection-start-column="35" selection-end-line="7564" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/SecondDiagonalCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="103" selection-start-line="6" selection-start-column="103" selection-end-line="6" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/MainDiagonalCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="101" selection-start-line="4" selection-start-column="101" selection-end-line="4" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/DirectCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/VerticalCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/HorizontalCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/Constraint.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <folding>
+            <element signature="e#52#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/Check.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="e#47#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/LinearCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/check/DiagonalCheck.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
+          <folding>
+            <element signature="e#47#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/LinearConstraint.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/DiagonalConstraint.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+          <folding>
+            <element signature="e#52#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/MainDiagonalConstraint.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/constraint/HorizontalConstraint.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfigurationUnitTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding>
+            <element signature="e#36#231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameControllerUnitTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="15" column="38" selection-start-line="15" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11543">
+          <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/test/java/com/training/colorfulchess/GameConfiguration2UnitTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="e#36#245#0" expanded="true" />
+            <element signature="e#372#388#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/training/colorfulchess/game/GameConfiguration2.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="211" column="5" lean-forward="true" selection-start-line="211" selection-start-column="5" selection-end-line="211" selection-end-column="5" />
+          <folding>
+            <element signature="e#1794#3501#0" />
+            <element signature="e#4662#5827#0" />
+            <element signature="e#7623#9386#0" />
+            <element signature="e#9400#9427#0" />
+            <element signature="e#14262#14283#0" />
+            <element signature="e#14769#15177#0" />
+            <element signature="e#15784#15806#0" />
+            <element signature="e#16823#16858#0" />
+            <element signature="e#16927#16945#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
