@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:dist="http://schemas.android.com/apk/distribution"
+        xmlns:tools="http://schemas.android.com/tools"
         package="com.training.colorfulchess">
     <!-- Include required permissions for Google Mobile Ads to run. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,7 +22,8 @@
         <activity
                 android:name=".game.GameActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/GameTheme">
+                android:theme="@style/GameTheme"
+                >
 
         </activity>
         <activity android:name=".MainActivity">

@@ -145,14 +145,14 @@ class GameActivity : AppCompatActivity(), SkinAdapter.OnSkinSelectedListener {
             hideTimers()
             return
         }
-        timer1.timeSpan = time
-        timer2.timeSpan = time
+        timer1.timeSpan = time * 60
+        timer2.timeSpan = time * 60
 
         timer1.textColor = Color.BLACK
         timer2.textColor = Color.BLACK
 
-        timer1.warnTime = time / 4
-        timer2.warnTime = time / 4
+        timer1.warnTime = time * 15
+        timer2.warnTime = time * 15 //(time *60) / 4
 
         timer1.font = ResourcesCompat.getFont(this, R.font.radio)!!
         timer2.font = ResourcesCompat.getFont(this, R.font.radio)!!
